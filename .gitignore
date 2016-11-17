@@ -193,3 +193,9 @@ ModelManifest.xml
 /HttpRequestService/packages
 /HttpRequestService/HttpRequestService/obj
 /HttpRequestService/HttpRequestService/bin
+/Demo/packages
+/Demo/Demo/job_scheduling_data_2_0.xsd
+/Demo/Demo/bin
+/Demo/Demo/obj
+/HttpTaskService/packages
+/Quartz.NET-2.4.1

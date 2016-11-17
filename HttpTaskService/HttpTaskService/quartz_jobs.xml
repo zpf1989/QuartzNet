@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <schedule>
+
+    <!--任务1：-->
+    <job>
+      <name>job1</name>
+      <!-- 这里借用description属性作为请求url -->
+      <description>https://www.baidu.com/</description>
+      <job-type>HttpTaskService.HttpJob,HttpTaskService</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <!--任务1触发器1：每个任务可以有多个触发器-->
+    <trigger>
+      <cron>
+        <name>job1_trigger_1</name>
+        <!-- 必须与对应job名称一致 -->
+        <job-name>job1</job-name>
+        <!-- 每分钟执行一次 -->
+        <cron-expression>0 0/1 * * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <!--任务1触发器2-->
+    <trigger>
+      <cron>
+        <name>job1_trigger_2</name>
+        <!-- 必须与对应job名称一致 -->
+        <job-name>job1</job-name>
+        <!-- 每天下午22:45 -->
+        <cron-expression>0 0 23 * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+</job-scheduling-data>
