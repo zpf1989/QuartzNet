@@ -8,6 +8,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading;
@@ -17,15 +18,11 @@ namespace HttpTaskService
 {
     public partial class HttpTaskService : ServiceBase
     {
-        private readonly ILog logger;
         private IScheduler scheduler;
 
         public HttpTaskService()
         {
             InitializeComponent();
-
-            log4net.Config.XmlConfigurator.ConfigureAndWatch(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config"));
-            logger = LogManager.GetLogger(GetType());
 
             ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
             scheduler = schedulerFactory.GetScheduler();
@@ -36,25 +33,25 @@ namespace HttpTaskService
         protected override void OnStart(string[] args)
         {
             scheduler.Start();
-            logger.Info("Quartz服务成功启动");
+            Log.Logger.Info("Quartz服务成功启动");
         }
 
         protected override void OnStop()
         {
             scheduler.Shutdown();
-            logger.Info("Quartz服务成功终止");
+            Log.Logger.Info("Quartz服务成功终止");
         }
 
         protected override void OnPause()
         {
             scheduler.PauseAll();
-            logger.Info("Quartz服务暂停");
+            Log.Logger.Info("Quartz服务暂停");
         }
 
         protected override void OnContinue()
         {
             scheduler.ResumeAll();
-            logger.Info("Quartz服务恢复");
+            Log.Logger.Info("Quartz服务恢复");
 
         }
     }

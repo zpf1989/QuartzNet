@@ -117,8 +117,6 @@ DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
 
-# Click-Once directory
-publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
@@ -199,3 +197,4 @@ ModelManifest.xml
 /Demo/Demo/obj
 /HttpTaskService/packages
 /Quartz.NET-2.4.1
+/HttpRequestService/HttpRequestService.v12.suo

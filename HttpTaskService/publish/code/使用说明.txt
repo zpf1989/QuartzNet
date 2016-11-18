@@ -1,0 +1,7 @@
+1、设置定时任务，quartz_jobs.xml文件
+	添加任务步骤：
+		①添加任务，添加<job>节点
+		②添加触发器，添加<trigger>，<trigger>需要设置name、job_name和cron-expression
+	注：该文件内所有job和trigger都将有效，如果不需要，请移除
+2、双击HttpTaskService.exe，按照提示安装到系统服务
+3、安装服务后，不能再移动程序目录
