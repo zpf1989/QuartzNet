@@ -198,3 +198,4 @@ ModelManifest.xml
 /HttpTaskService/packages
 /Quartz.NET-2.4.1
 /HttpRequestService/HttpRequestService.v12.suo
+/HttpTaskService/publish/code/log
