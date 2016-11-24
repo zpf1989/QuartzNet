@@ -26,8 +26,8 @@
         <name>job1_trigger</name>
         <!-- 必须与对应job名称一致 -->
         <job-name>job1</job-name>
-        <!-- 每5分钟执行一次 -->
-        <cron-expression>0 0/5 * * * ?</cron-expression>
+        <!-- 每1分钟执行一次 -->
+        <cron-expression>0 0/1 * * * ?</cron-expression>
       </cron>
     </trigger>
 

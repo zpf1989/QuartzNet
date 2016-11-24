@@ -14,6 +14,19 @@ namespace HttpTaskService
 {
     public class HttpHelper
     {
+        static int _defaultTimeout = 500;//单位s
+        public static int TimeOut
+        {
+            get
+            {
+                var val = ConfigHelper.GetAppSetting("http_timeout", _defaultTimeout.ToString());
+                int time = _defaultTimeout;
+                int.TryParse(val, out time);
+
+                return time;
+            }
+        }
+
         private static readonly string DefaultUserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
         /// <summary>  
         /// 创建GET方式的HTTP请求  
@@ -37,10 +50,9 @@ namespace HttpTaskService
             {
                 request.UserAgent = userAgent;
             }
-            if (timeout.HasValue)
-            {
-                request.Timeout = timeout.Value;
-            }
+            request.Timeout = timeout.HasValue ? timeout.Value : (TimeOut * 1000);
+            //Log.Logger.Info("timeout:" + TimeOut);
+
             if (cookies != null)
             {
                 request.CookieContainer = new CookieContainer();
